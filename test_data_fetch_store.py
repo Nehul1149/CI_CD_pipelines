@@ -23,12 +23,13 @@ class TestDataFetchStore(unittest.TestCase):
             )
         ''')
         # Clean previous test data
-        self.cursor.execute('DELETE FROM sample_data')
-        self.conn.commit()
+        # self.cursor.execute('DELETE FROM sample_data')
+        # self.conn.commit()
 
     def test_fetch_and_store_data(self):
         # Step 1: Fetch data from sample API
-        response = requests.get("https://jsonplaceholder.typicode.com/posts/1")
+        # response = requests.get("https://jsonplaceholder.typicode.com/posts/1")
+        response = requests.get("https://jsonplaceholder.typicode.com/posts/2")
         self.assertEqual(response.status_code, 200)
         data = response.json()
         
@@ -43,9 +44,9 @@ class TestDataFetchStore(unittest.TestCase):
         
         self.assertEqual(stored_title, title)
 
-    def tearDown(self):
-        self.cursor.close()
-        self.conn.close()
+    # def tearDown(self):
+    #     self.cursor.close()
+    #     self.conn.close()
 
 if __name__ == '__main__':
     unittest.main()
